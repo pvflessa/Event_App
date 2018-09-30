@@ -39,4 +39,33 @@ class UI {
           })
           .catch(err => console.log(err))
   }
+
+  // Message
+
+  printMessage(message, className){
+    //Create div
+    const div = document.createElement('div')
+    //Give a class to div
+    div.className = className
+    //add the text
+    div.appendChild(document.createTextNode(message))
+    //add to html
+    const searchDiv = document.querySelector('#search-events')
+    searchDiv.appendChild(div)
+
+    //Remove the alert after 3 sec
+
+    setTimeout(()=>{
+      this.removeMessage()
+    },3000)
+  }
+
+  //Remove Message
+
+  removeMessage(){
+    const alert = document.querySelector('.alert')
+    if(alert){
+      alert.remove()
+    }
+  }
 }
