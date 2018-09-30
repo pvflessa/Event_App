@@ -25,7 +25,21 @@ document.querySelector('#submitBtn').addEventListener('click',function(e){
 
     eventbrite.getEvents(eventName,category)
     .then(data => {
-      console.log(data);
+      //console.log(data);
+
+      //Check if there are  Events
+
+      const eventList = data.events.events
+      if(eventList.length>0){
+
+        //Display Events to UI
+
+        ui.displayEvents(eventList)
+      }else{
+        //Print Message
+
+        ui.printMessage('No Results Found' ,'text-center alert alert-danger')
+      }
     })
 
 
