@@ -5,6 +5,7 @@ class EventBrite{
 
   constructor() {
     this.auth_token = 'CSJDHITXSQN4UFUL2UHR'
+    this.orderby = 'date'
 
   }
 
@@ -23,5 +24,22 @@ class EventBrite{
             categories
           }
       }
+
+  //Get the Events from API
+
+  async getEvents(eventName, category){
+
+    const eventsResponse = await fetch(`https://www.eventbriteapi.com/v3/events/search/?q=${eventName}&sort_by=${this.orderby}&categories=${category}&token=${this.auth_token}`);
+
+            // Wait for response and return as json
+
+            const events = await eventsResponse.json();
+
+            return {
+                 events
+            }
+
+
+  }
 
 }

@@ -21,7 +21,14 @@ document.querySelector('#submitBtn').addEventListener('click',function(e){
   //Check The Inputs
 
   if(eventName !== '' ){
-    //Query Event API
+    //Get Events from API
+
+    eventbrite.getEvents(eventName,category)
+    .then(data => {
+      console.log(data);
+    })
+
+
   }else{
     //Display  Message
     ui.printMessage('Add an Event or City', 'alert alert-danger mt-3 text-center')
